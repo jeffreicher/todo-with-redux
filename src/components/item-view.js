@@ -34,18 +34,26 @@ class ItemView extends Component {
         const hour = i.getHours();
         const min = i.getMinutes();
         const time = date + ' ' + month + ' ' + year + ' - ' + hour + ':' + min;
+
+        const spacing = {
+            display: 'flex',
+            justifyContent: 'space-around',
+            marginTop: '4vh'
+        };
         
         console.log('date', date);
         return (
             <div>
                 <Link className="btn" to="/">View Full List</Link>
-                <h3>Title: {item.title}</h3>
+                <h4>Title: {item.title}</h4>
                 <p>Details: {item.details}</p>
                 <p>Completed: {(item.complete) ? 'Yes' : 'No'}</p>
-                <p>Timestamp: {'' + time}</p>
-
-                <Link to="/" className="btn green darken-3" onClick={this.completeTask.bind(this)}>Completed</Link>
-                <Link to="/" className="btn red darken-3" onClick={this.delete.bind(this)}>Delete</Link>                
+                <p>Timestamp: {(item.complete) ? '' + time : 'Incomplete'}</p>
+                <div style={spacing}>
+                    <button className="btn green darken-3" onClick={this.completeTask.bind(this)}>Completed</button>
+                    <Link to="/" className="btn red darken-3" onClick={this.delete.bind(this)}>Delete</Link>                    
+                </div>
+                
             </div>
         );
     };
