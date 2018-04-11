@@ -8,11 +8,15 @@ const DEFAULT_STATE = {
 export default function(state = DEFAULT_STATE, action) {
     switch(action.type) {
         case types.GET_LIST_DATA:
-            console.log('GOTEMMMMMMMMMMMMMMMMM', action.payload);
             return {...state, items: action.payload.data.todos};
         case types.GET_SINGLE_ITEM:
-            console.log('Single Item:', action);
-            return {...state, singleItem: action.payload.data.todo}
+            return {...state, singleItem: action.payload.data.todo};
+        case types.MARK_COMPLETE:
+            console.log('Completed:', action)
+            return {...state, singleItem: action.payload.data.todo};
+            case types.DELETE:
+            console.log('Delete:', action);
+            return {...state, singleItem: action.payload.data.todo};
         default: 
             return state;
     };
