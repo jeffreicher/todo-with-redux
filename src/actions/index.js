@@ -31,6 +31,24 @@ export function addNewItem(item) {
     };
 };
 
+export function markComplete(id) {
+    const response = axios.put(`${BASE_URL}/todos/${id + API_KEY}`);
+
+    return {
+        type: types.MARK_COMPLETE,
+        payload: response
+    };
+};
+
+export function deleteItem(id) {
+    const response = axios.delete(`${BASE_URL}/todos/${id + API_KEY}`);
+
+    return {
+        type: types.DELETE,
+        payload: response
+    };
+};
+
 //Delete item:
 //axios.delete(`${BASE_URL}/todos/${id + API_KEY}`)
 
